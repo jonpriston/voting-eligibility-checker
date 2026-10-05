@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jon Priston Voting Checker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: sans-serif; background: #f0f9f0; display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; }
+    .card { background:white; padding:30px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.1); width:90%; max-width:400px; text-align:center; }
+    input { width:90%; padding:12px; margin:10px 0; border-radius:8px; border:1px solid #ccc; font-size:16px; }
+    button { background:#16a34a; color:white; padding:12px 20px; border:none; border-radius:8px; font-size:16px; width:95%; cursor:pointer; }
+    button:hover { background:#15803d; }
+    #result { margin-top:20px; font-weight:bold; font-size:18px; min-height:30px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🗳️ Can You Vote?</h2>
+    <p>Built by Jon Priston</p>
+    <input type="text" id="name" placeholder="Your name">
+    <input type="number" id="age" placeholder="Your age">
+    <button onclick="checkVote()">Check Now</button>
+    <div id="result"></div>
+    <p style="margin-top:20px;"><a href="https://jonpriston-voting-system.netlify.app">My Live Link</a></p>
+  </div>
+
+  <script>
+    function checkVote(){
+      let name = document.getElementById('name').value;
+      let age = document.getElementById('age').value;
+      let result = document.getElementById('result');
+      
+      if(name == "" || age == ""){
+        result.innerHTML = "⚠️ Oga, fill name and age first!";
+        result.style.color = "orange";
+        return;
+      }
+      
+      if(age >= 18){
+        result.innerHTML = "✅ YES " + name + "! You fit vote. Go collect PVC!";
+        result.style.color = "green";
+      } else {
+        result.innerHTML = "❌ Sorry " + name + ", you too young. Wait " + (18 - age) + " more years.";
+        result.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
